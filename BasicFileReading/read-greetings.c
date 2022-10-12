@@ -14,6 +14,7 @@ FILE * openFile() {
 void lineByLine(FILE * fP) {
     char buff[255];
     int count = 1;
+    // Print each line until you get to end of file
     do {
         fgets(buff,255, (FILE *)fP);
         printf("%d: %s", count, buff);
