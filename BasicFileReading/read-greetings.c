@@ -14,10 +14,11 @@ FILE * openFile() {
 void lineByLine(FILE * fP) {
     char buff[255];
     int count = 1;
-    while (fgets(buff,255, (FILE *)fP) != NULL ) {
+    do {
+        fgets(buff,255, (FILE *)fP);
         printf("%d: %s", count, buff);
         count++;
-    }
+    } while (!feof(fP));
 }
 
 /**
@@ -76,10 +77,10 @@ int main() {
         perror("There was an error opening the file");
         exit(EXIT_FAILURE);
     }
-    // lineByLine(fGreetings);
+    lineByLine(fGreetings);
     // charByChar(fGreetings);
     // stripSpace(fGreetings);
-    countLines(fGreetings);
+    // countLines(fGreetings);
     fclose(fGreetings);
     return 0;
 }
