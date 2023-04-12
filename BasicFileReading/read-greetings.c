@@ -1,6 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+FILE * openFile();
+void lineByLine(FILE *);
+void charByChar(FILE *);
+void stripSpace(FILE *);
+void countLines(FILE *);
+
+int main() {
+    FILE *fGreetings;
+    fGreetings = openFile();
+    // Exit if file doesn't exist
+    if (fGreetings == NULL) {
+        perror("There was an error opening the file");
+        exit(EXIT_FAILURE);
+    }
+    lineByLine(fGreetings);
+    // charByChar(fGreetings);
+    // stripSpace(fGreetings);
+    // countLines(fGreetings);
+    fclose(fGreetings);
+    return 0;
+}
+
 FILE * openFile() {
     FILE *fP;
     fP = fopen("greetings.txt", "r");
@@ -68,20 +90,4 @@ void countLines(FILE * fP) {
         count++;
     }
     printf("There are %d greetings.", count);
-}
-
-int main() {
-    FILE *fGreetings;
-    fGreetings = openFile();
-    // Exit if file doesn't exist
-    if (fGreetings == NULL) {
-        perror("There was an error opening the file");
-        exit(EXIT_FAILURE);
-    }
-    lineByLine(fGreetings);
-    // charByChar(fGreetings);
-    // stripSpace(fGreetings);
-    // countLines(fGreetings);
-    fclose(fGreetings);
-    return 0;
 }

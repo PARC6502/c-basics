@@ -1,4 +1,5 @@
-CFLAGS=-Wall -g
+CFLAGS=-Wall -g 
+MAKEFLAGS+=-j8 
 CC=gcc
 
 clean:
